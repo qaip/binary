@@ -1,8 +1,7 @@
 import { analyticalMinimize } from './analytical.ts';
 import { karnaughMinimize } from './karnaugh.ts';
 import { quineMcCluskeyMinimize } from './quine-mc-cluskey.ts';
-import { stringify } from './utils.ts';
-import { abs } from './utils.ts';
+import { stringify, abs, table } from './utils.ts';
 
 const parse = (formula: string, reverse: boolean) => {
   const regex = reverse
@@ -31,3 +30,11 @@ export const minimize = (formula: string, method: keyof typeof methods) => {
   constituents = methods[method](constituents, reverse, variables);
   return stringify(constituents, reverse);
 };
+
+
+export const Minimize = (value: TemplateStringsArray) => {
+  const formula = table(value)
+  console.log('%cin:', 'color: yellow', formula)
+  console.log('%cout:', 'color: green', minimize(formula, 'QuineMcCluskey'))
+  console.log()
+}

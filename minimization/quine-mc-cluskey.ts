@@ -5,7 +5,7 @@ export const quineMcCluskeyMinimize = (constituents: string[][], _reverse: boole
   const table = implicants.map((implicant) =>
     constituents.map((constituent) => implicant.every((variable) => constituent.includes(variable)))
   );
-  printQuineMcCluskeyTable(table, implicants, constituents);
+  // printQuineMcCluskeyTable(table, implicants, constituents);
   const final = constituents.reduce((result, _, index) => result + +table.some((record) => record[index]), 0);
   for (let toDelete = 0; toDelete < table.length;) {
     const newFinal = constituents.reduce(

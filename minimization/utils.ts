@@ -29,3 +29,6 @@ export const stringify = (minimized: string[][], reverse: boolean) => {
   const second = reverse ? '*' : '+';
   return minimized.map((group) => group.join(` ${first} `)).join(`  ${second}  `);
 };
+
+const f = (a: string[]) => a.map((v, i) => `${+v ? '' : '!'}x${i+1}`).join(' * ');
+export const table = (s: TemplateStringsArray) => s[0].split('\n').filter(Boolean).map(g => f(g.split(''))).join('  +  ');
